@@ -367,10 +367,24 @@ class Users:
         dt = time_resolution / (60 * 60)
         # calculate the temperatures (Q_HC, T_op, T_m, T_air, T_s)
         (Q_HC, T_i, T_s, T_m, T_op) = heating.calculate(envelope, site["T_e"], dt)
+
+        # calculate the daily average temperature T_day_avg
+        t_day = int(24 / dt)  # timesteps in a day
+        n_days = int(len(site["T_e"]) // t_day)  # number of days
+        days = site["T_e"][: n_days * t_day].reshape(n_days, t_day)
+        T_day_avg = days.mean(axis=1)
+        remainder = site["T_e"][n_days * t_day :]
+        if len(remainder) > 0:
+            remainder_mean = remainder.mean()
+            T_day_avg = np.append(T_day_avg, remainder_mean)
+
         # heating  load for the current time step in Watt
         self.heat = np.zeros(len(Q_HC))
         for t in range(len(Q_HC)):
-            self.heat[t] = max(0, Q_HC[t])
+            if T_day_avg[t // t_day] < 10:
+                self.heat[t] = max(0, Q_HC[t])
+            else:
+                self.heat[t] = 0
 
     def saveProfiles(self, unique_name, path):
         """
