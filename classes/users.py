@@ -381,7 +381,7 @@ class Users:
         # heating  load for the current time step in Watt
         self.heat = np.zeros(len(Q_HC))
         for t in range(len(Q_HC)):
-            if T_day_avg[t // t_day] < 10:
+            if T_day_avg[t // t_day] < 12:
                 self.heat[t] = max(0, Q_HC[t])
             else:
                 self.heat[t] = 0
