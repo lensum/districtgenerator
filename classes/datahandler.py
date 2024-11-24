@@ -187,7 +187,6 @@ class Datahandler:
         self.scenario = pd.read_csv(
             self.scenario_name,
             header=0,
-            delimiter=";",
         )
 
         # initialize buildings for scenario
