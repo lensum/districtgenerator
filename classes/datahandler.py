@@ -345,6 +345,29 @@ class Datahandler:
                     building["unique_name"], os.path.join(self.resultPath, "demands")
                 )
 
+            # calculate heatloads
+            # at norm outside temperature
+            building["heatload"] = building["envelope"].calcHeatLoad(
+                site=self.site, method="design"
+            )
+            # at bivalent temperature
+            building["bivalent"] = building["envelope"].calcHeatLoad(
+                site=self.site, method="bivalent"
+            )
+            # at heating limit temperature
+            building["heatlimit"] = building["envelope"].calcHeatLoad(
+                site=self.site, method="heatlimit"
+            )
+            # for drinking hot water
+            # building["dhwload"] = (
+            #    bldgs["dhwload"][
+            #        bldgs["buildings_short"].index(
+            #            building["buildingFeatures"]["building"]
+            #        )
+            #    ]
+            #    * building["user"].nb_flats
+            # )
+
         # print("Finished generating demands!")
 
     def generateDistrictComplete(

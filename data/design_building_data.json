@@ -1,7 +1,7 @@
 [
   {
     "name": "T_set_min",
-    "value":  20.0,
+    "value": 20.0,
     "unit": "degree Celsius",
     "description": "Required minimum indoor temperature (for heating load calculation)"
   },
@@ -19,7 +19,7 @@
   },
   {
     "name": "T_heatlimit",
-    "value":  15.0,
+    "value": 12.0,
     "unit": "degree Celsius",
     "description": "Limit temperature (for heat pump design)"
   },
@@ -31,32 +31,55 @@
   },
   {
     "name": "buildings_short",
-    "value": ["SFH", "MFH", "TH", "AB"],
+    "value": [
+      "SFH",
+      "MFH",
+      "TH",
+      "AB"
+    ],
     "unit": "-",
     "description": "Abbreviations of the selectable building types."
   },
   {
     "name": "buildings_long",
-    "value": ["single_family_house", "multi_family_house", "terraced_house", "apartment_block"],
-    "unit":  "-",
+    "value": [
+      "single_family_house",
+      "multi_family_house",
+      "terraced_house",
+      "apartment_block"
+    ],
+    "unit": "-",
     "description": "Names of the four selectable building types."
   },
   {
     "name": "retrofit_short",
-    "value": [0, 1, 2],
+    "value": [
+      0,
+      1,
+      2
+    ],
     "unit": "-",
     "description": "Abbreviations of the retrofit levels."
   },
   {
     "name": "retrofit_long",
-    "value": ["tabula_standard", "tabula_retrofit", "tabula_adv_retrofit"],
-    "unit":  "-",
+    "value": [
+      "tabula_standard",
+      "tabula_retrofit",
+      "tabula_adv_retrofit"
+    ],
+    "unit": "-",
     "description": "Names of the retrofit levels."
   },
   {
     "name": "dhwload",
-    "value": [4662.1, 4662.1, 4662.1, 3999.8],
-    "unit":  "Watt",
+    "value": [
+      4662.1,
+      4662.1,
+      4662.1,
+      3999.8
+    ],
+    "unit": "Watt",
     "description": "Maximal power for domestic hot water for each of the four building types (SFH, MFH, TH and AB)"
   }
 ]
