@@ -312,7 +312,7 @@ class Datahandler:
                     )
 
                 print(
-                    "\tCalculate demands of building {}/{}".format(
+                    "\t\tCalculate demands of building {}/{}".format(
                         idx, len(self.district) - 1
                     )
                 )
